@@ -1,0 +1,66 @@
+.filter {
+    &__container {
+        padding: 20px;
+    }
+
+    &__menu {
+        display: flex;
+        border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -ms-border-radius: 10px;
+        -o-border-radius: 10px;
+        -webkit-box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.42);
+        -moz-box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.42);
+        box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.42);
+    }
+
+    &__car {
+        display: table-caption;
+        padding: 0 15px;
+        border-right: 1px solid rgb(173, 173, 173);
+        cursor: pointer;
+        background-color: #C5E8FF;
+        transition: all 0.15s ease-in-out;
+        -webkit-transition: all 0.15s ease-in-out;
+        -moz-transition: all 0.15s ease-in-out;
+        -ms-transition: all 0.15s ease-in-out;
+        -o-transition: all 0.15s ease-in-out;
+
+        &:not(:last-child) {
+            border-bottom: 1px solid rgb(173, 173, 173);
+        }
+
+        &:first-child {
+            border-radius: 10px 0 0 0;
+            -webkit-border-radius: 10px 0 0 0;
+            -moz-border-radius: 10px 0 0 0;
+            -ms-border-radius: 10px 0 0 0;
+            -o-border-radius: 10px 0 0 0;
+        }
+
+        &:last-child {
+            border-radius: 0 0 0 10px;
+            -webkit-border-radius: 0 0 0 10px;
+            -moz-border-radius: 0 0 0 10px;
+            -ms-border-radius: 0 0 0 10px;
+            -o-border-radius: 0 0 0 10px;
+        }
+
+    }
+
+    &__selected {
+        border-right: 1px solid rgba(173, 173, 173, 0);
+        background-color: white;
+    }
+
+    &__options {
+        padding: 15px;
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        grid-column-gap: 20px;
+        grid-row-gap: 20px;
+    }
+}
