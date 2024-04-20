@@ -1,0 +1,13 @@
+.cars {
+    &__result {
+        font-size: 24px;
+        font-weight: 600;
+        margin: 20px 0;
+    }
+
+    &__collection {
+        display: flex;
+        gap: 40px;
+        flex-wrap: wrap;
+    }
+}

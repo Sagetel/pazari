@@ -87,6 +87,7 @@ function FilterMain() {
                         {options.map((option, index) =>
                             <FilterOption selectedOptions={selectedOptions} changeSelector={changeSelector} name={option.name} key={index} index={index} type={option.type} value={option.value} optionRef={optionRef} variants={option.variants} setNewRuleSetting={setNewRuleSetting} typeInput={option.typeInput} />)
                         }
+                        <div className={styles.filter__btn}>Показать результаты</div>
                     </div>
                 </div>
             </div>

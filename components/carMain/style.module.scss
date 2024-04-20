@@ -1,4 +1,49 @@
 .car {
-    
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    overflow: hidden;
+    width: fit-content;
+    -webkit-box-shadow: 1px 4px 5px 1px rgba(0, 0, 0, 0.26);
+    -moz-box-shadow: 1px 4px 5px 1px rgba(0, 0, 0, 0.26);
+    box-shadow: 1px 4px 5px 1px rgba(0, 0, 0, 0.26);
+    cursor: pointer;
+    color: rgb(88, 88, 88);
+    transition: all 0.2s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
 
+    &:hover {
+        transform: scale(1.02);
+        -webkit-transform: scale(1.02);
+        -moz-transform: scale(1.02);
+        -ms-transform: scale(1.02);
+        -o-transform: scale(1.02);
+    }
+
+
+    &__text {
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    &__name {
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    &__year {
+        font-weight: 600;
+    }
+
+    &__price {
+        font-weight: 600;
+        font-size: 24px;
+    }
 }
