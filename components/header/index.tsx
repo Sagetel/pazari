@@ -5,9 +5,9 @@ const Header = () => {
     <header className={styles.header}>
       <div className={styles.header__firstline}>
         <div className={styles.header__container}>
-          <div className={styles.header__logo}>
+          <a className={styles.header__logo} href="/">
             MERCADO
-          </div>
+          </a>
           <nav className={styles.header__nav}>
             <ul className={styles.header__list}>
               <li className={styles.header__link}>Избранное</li>
