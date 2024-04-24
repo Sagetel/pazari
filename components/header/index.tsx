@@ -38,7 +38,9 @@ const Header = () => {
               <li className={styles.underline__link}>Отечественные</li>
               <li className={styles.underline__link}>Мотоциклы</li>
               <li className={styles.underline__link}>Коммерческий транспорт</li>
-              <li className={styles.underline__link}>Шаблоны</li>
+              <a className={styles.underline__link} href={"/sample"}>
+                Шаблоны
+              </a>
             </ul>
           </nav>
         </div>

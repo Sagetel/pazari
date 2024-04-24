@@ -17,7 +17,7 @@ interface props {
 function CarMain(props: props) {
     const { brand, model, gear, transmission, engine, year, mileage, type, volume, carBody, price, img } = props
     return (
-        <div className={styles.car}>
+        <a className={styles.car} href={"car/1"}>
             <div className={styles.car__image}>
                 <Image
                     src={img}
@@ -32,7 +32,7 @@ function CarMain(props: props) {
                 <div className={styles.car__year}>{year + 'г. ' + mileage.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + "км"}</div>
                 <div className={styles.car__price}>{price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + "₽"}</div>
             </div>
-        </div>
+        </a>
     )
 }
 

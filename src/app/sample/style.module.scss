@@ -1,0 +1,79 @@
+.sample {
+    &__container {
+        display: block;
+    }
+
+    &__title {
+        font-size: 30px;
+        font-weight: 600;
+        margin-top: 20px;
+    }
+
+    &__create__title {
+        position: relative;
+        width: fit-content;
+        margin-left: auto;
+        padding: 10px 25px;
+        background-color: #1ED760;
+        color: white;
+        border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -ms-border-radius: 10px;
+        -o-border-radius: 10px;
+        cursor: pointer;
+        user-select: none;
+        transition: all 0.2s ease-in-out;
+        -webkit-transition: all 0.2s ease-in-out;
+        -moz-transition: all 0.2s ease-in-out;
+        -ms-transition: all 0.2s ease-in-out;
+        -o-transition: all 0.2s ease-in-out;
+
+        &:active {
+            background-color: #17c052;
+        }
+
+        &:hover {
+            transform: scale(1.03);
+            -webkit-transform: scale(1.03);
+            -moz-transform: scale(1.03);
+            -ms-transform: scale(1.03);
+            -o-transform: scale(1.03);
+        }
+    }
+
+    &__name {
+        font-size: 18px;
+    }
+
+    &__table {
+        margin-top: 30px;
+    }
+
+    &__row {
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 40px;
+        -webkit-box-shadow: 0px 4px 14px 1px rgba(0, 0, 0, 0.18);
+        -moz-box-shadow: 0px 4px 14px 1px rgba(0, 0, 0, 0.18);
+        box-shadow: 0px 4px 14px 1px rgba(0, 0, 0, 0.18);
+        border-radius: 15px;
+        -webkit-border-radius: 15px;
+        -moz-border-radius: 15px;
+        -ms-border-radius: 15px;
+        -o-border-radius: 15px;
+    }
+
+    &__rules {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-column-gap: 10px;
+        grid-row-gap: 10px;
+    }
+
+    &__cell {
+        font-size: 16px;
+    }
+}
