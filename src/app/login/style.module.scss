@@ -1,0 +1,92 @@
+.login {
+    height: 100%;
+
+    &__container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+
+    &__switcher {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    &__form {
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    &__variant {
+        background-color: #C5E8FF;
+        color: #4556EE;
+        padding: 10px;
+        text-align: center;
+        cursor: pointer;
+        transition: all .1s;
+        -webkit-transition: all .1s;
+        -moz-transition: all .1s;
+        -ms-transition: all .1s;
+        -o-transition: all .1s;
+
+    }
+
+    &__panel {
+        border-radius: 10px;
+        overflow: hidden;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -ms-border-radius: 10px;
+        -o-border-radius: 10px;
+        width: fit-content;
+        -webkit-box-shadow: 0px 0px 12px 3px rgba(0, 0, 0, 0.2);
+        -moz-box-shadow: 0px 0px 12px 3px rgba(0, 0, 0, 0.2);
+        box-shadow: 0px 0px 12px 3px rgba(0, 0, 0, 0.2);
+
+    }
+
+    &__title {
+        font-size: 30px;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+
+    &__btn {
+        border-radius: 5px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        -ms-border-radius: 5px;
+        -o-border-radius: 5px;
+        background-color: #4556EE;
+
+        color: white;
+        padding: 10px;
+        text-align: center;
+        cursor: pointer;
+        user-select: none;
+        font-size: 20px;
+
+        &:active {
+            color: rgb(240, 240, 240);
+        }
+
+        &:hover {
+        background-color: #4f60f9;
+
+        }
+    }
+
+    &__active {
+        background-color: #4556EE;
+        color: white;
+    }
+
+    input {
+        min-width: 400px;
+        font-size: 15px;
+
+    }
+}

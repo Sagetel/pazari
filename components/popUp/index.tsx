@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import styles from './style.module.scss';
 
-interface PopUpProps {
+interface PopupProps {
     setIsOpen: (value: boolean) => void;
     children: React.ReactNode;
 }
 
-const PopUp: React.FC<PopUpProps> = ({ setIsOpen, children }) => {
+const Popup: React.FC<PopupProps> = ({ setIsOpen, children }) => {
     const handleContentClick = (e: React.MouseEvent) => {
         e.stopPropagation();
     };
@@ -20,4 +20,4 @@ const PopUp: React.FC<PopUpProps> = ({ setIsOpen, children }) => {
     );
 };
 
-export default PopUp;
+export default Popup;

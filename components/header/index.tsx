@@ -14,8 +14,7 @@ const Header = () => {
               <li className={styles.header__link}>Личный навигатор</li>
               <li className={styles.header__link}>Поддержка</li>
             </ul>
-            <div className={styles.header__link}>Вход
-
+            {/* <a className={styles.header__link} href="/login">Вход
               <Image
                 className={styles.header__enter}
                 src='/icons/enter.svg'
@@ -23,7 +22,16 @@ const Header = () => {
                 height={30}
                 alt="Picture of the author"
               />
-            </div>
+            </a> */}
+            <a className={styles.header__link} href="/account/121">
+              <Image
+                className={styles.header__enter}
+                src='/icons/user.svg'
+                width={30}
+                height={30}
+                alt="Picture of the author"
+              />
+            </a>
           </nav>
         </div>
       </div>

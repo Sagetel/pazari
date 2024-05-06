@@ -1,0 +1,42 @@
+.account {
+    &__container {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-column-gap: 20px;
+        grid-row-gap: 20px;
+    }
+
+    &__title {
+        font-size: 30px;
+        font-weight: 600;
+        margin-top: 20px;
+        grid-area: 1 / 1 / 2 / 3;
+    }
+
+    &__menu {
+        grid-area: 2 / 1 / 3 / 2;
+        width: fit-content;
+
+        &__item {
+            background-color: #4556EE;
+            color: white;
+            padding: 20px 10px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: rgb(35, 53, 222);
+
+            }
+
+            transition: all 0.2s ease-out;
+            -webkit-transition: all 0.2s ease-out;
+            -moz-transition: all 0.2s ease-out;
+            -ms-transition: all 0.2s ease-out;
+            -o-transition: all 0.2s ease-out;
+        }
+    }
+
+    &__information {
+        grid-area: 2 / 2 / 3 / 3;
+    }
+}

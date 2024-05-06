@@ -6,11 +6,27 @@
     margin: 0 auto;
 }
 
+html,
+body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
 body {
     font-family: 'Open Sans', sans-serif;
     margin-bottom: 50px;
+    height: 100%;
 }
 
 a {
     text-decoration: none;
+}
+
+button {
+    outline: none;
+    border: none;
 }
