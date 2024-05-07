@@ -22,17 +22,21 @@
             color: white;
             padding: 20px 10px;
             cursor: pointer;
+            transition: all 0.2s ease-out;
+            -webkit-transition: all 0.2s ease-out;
+            -moz-transition: all 0.2s ease-out;
+            -ms-transition: all 0.2s ease-out;
+            -o-transition: all 0.2s ease-out;
+
+            &__selected {
+                background-color: #1023d6;
+            }
 
             &:hover {
                 background-color: rgb(35, 53, 222);
 
             }
 
-            transition: all 0.2s ease-out;
-            -webkit-transition: all 0.2s ease-out;
-            -moz-transition: all 0.2s ease-out;
-            -ms-transition: all 0.2s ease-out;
-            -o-transition: all 0.2s ease-out;
         }
     }
 

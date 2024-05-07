@@ -17,7 +17,7 @@ interface props {
 function CarMain(props: props) {
     const { brand, model, gear, transmission, engine, year, mileage, type, volume, carBody, price, img } = props
     return (
-        <a className={styles.car} href={"car/1"}>
+        <a className={styles.car} href={"/car/1"}>
             <div className={styles.car__image}>
                 <Image
                     src={img}
