@@ -17,6 +17,7 @@ function Account() {
         'Избранное',
         'Настройки',
         'Выйти'
+        
     ]
     function renderSelectedComponent() {
         switch (selectedSection) {
