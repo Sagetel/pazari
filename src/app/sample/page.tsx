@@ -2,7 +2,7 @@
 import { useState, useEffect, useRef, RefObject } from 'react'
 import styles from './style.module.scss'
 import FilterOption from '../../../components/filterOptions'
-import Popup from './../../../components/popup'
+// import Popup from './../../../components/popup'
 function Sample() {
   const [sampleArray, setSampleArray] = useState([
     {
@@ -88,7 +88,7 @@ function Sample() {
         <div className={styles.sample__title}>Шаблоны поиска</div>
         <div className={styles.sample__create}>
           <div className={styles.sample__create__title} onClick={() => { setIsOpen(true) }}>Создать шаблон</div>
-          {isOpen &&
+          {/* {isOpen &&
             <Popup setIsOpen={setIsOpen}>
               <div className={styles.sample__options} onClick={() => {
                 console.log(setting);
@@ -100,7 +100,7 @@ function Sample() {
                 <div className={styles.sample__btn} onClick={() => { saveSample() }}>Сохранить</div>
               </div>
             </Popup>
-          }
+          } */}
         </div>
         <div className={styles.sample__table}>
           {sampleArray.map((sample, index) =>
