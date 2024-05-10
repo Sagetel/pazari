@@ -2,7 +2,7 @@
 import { useState, useEffect, useRef, RefObject } from 'react'
 import styles from './style.module.scss'
 import FilterOption from '../../../components/filterOptions'
-import Popup from '../../../components/popup'
+import Popup from './../../../components/popup'
 function Sample() {
   const [sampleArray, setSampleArray] = useState([
     {
