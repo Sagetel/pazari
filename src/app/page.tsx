@@ -52,7 +52,7 @@ export default function Home() {
         <div className={styles.main__title} onClick={() => {
           console.log(setting);
         }} >
-          Купить автомобиль в Санкт-Петербургеа
+          Купить автомобиль в Санкт-Петербурге
         </div>
         <FilterMain
           setting={setting}
