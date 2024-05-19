@@ -3,9 +3,9 @@
 import clsx from 'clsx'
 import React, { useState, useEffect } from 'react'
 import styles from './style.module.scss'
-import MyInformation from './../../../../components/myInformation'
-import MyAdverts from '../../../../components/myAdverts'
-import MyFavorite from '../../../../components/myFavorite'
+import MyInformation from '../../../components/myInformation'
+import MyAdverts from '../../../components/myAdverts'
+import MyFavorite from '../../../components/myFavorite'
 
 function Account() {
     const myInformation = { name: 'Олег', surname: 'Олег', phone: '+79009976651', email: 'cumhack@gmail.com', password: 'cumhack@gmail.com' }

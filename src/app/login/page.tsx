@@ -1,10 +1,16 @@
 'use client'
 import { useState } from 'react'
+import { registration, login } from '../../../utilities/api'
+import { setUser } from "../../../utilities/action"
+
 import clsx from 'clsx'
 import Input from '../../../components/UI/input'
 import styles from './style.module.scss'
+import { useContext } from 'react';
+import { Context } from "../../../context"
 
 function Login() {
+  const { state, dispatch } = useContext(Context);
   const [loginForm, setLoginForm] = useState(
     {
       email: '',
@@ -21,6 +27,38 @@ function Login() {
     })
   }
 
+  const sendData = async () => {
+    const jsonData = JSON.stringify(loginForm);
+    if (activeMode === 0) {
+      sendLogin();
+    } else {
+      await registration(jsonData);
+    }
+  }
+  //   const saveDataToCookie = (data: any) => {
+  //     if (remeberMe) {
+  //         Cookies.set('USER', JSON.stringify(data), { expires: 1 });
+  //     } else {
+  //         Cookies.set('USER', JSON.stringify(data), { expires: '' });
+  //     }
+  // };
+
+  const sendLogin = async () => {
+    const jsonData = JSON.stringify(loginForm);
+    const data = await login(jsonData)
+
+    if (data?.access_token !== undefined) {
+      console.log(data.access_token);
+      setUser(dispatch, data.access_token);
+
+      alert("Успешный вход")
+    } else {
+      alert("Неверный логин или пароль")
+    }
+  }
+  const dataState = useContext(Context);
+  
+
   const switcher = ['Вход', 'Регистрация']
 
   return (
@@ -32,7 +70,7 @@ function Login() {
               <div className={clsx(styles.login__variant, (activeMode === index && styles.login__active))} key={index} onClick={() => { setActiveMode(index) }}>{item}</div>
             )}
           </div>
-          <form className={styles.login__form}>
+          <div className={styles.login__form} onClick={()=>{console.log(dataState.state);}}>
 
             <div className={styles.login__title}>{activeMode ? "Регистрация" : 'Вход'}</div>
             <Input
@@ -47,8 +85,8 @@ function Login() {
               setNewValue={changeLoginForm}
               type='password'
             />
-          <button className={styles.login__btn} type='submit' onClick={(e) => { e.preventDefault() }}>{activeMode ? "Зарегистрироваться" : 'Войти'}</button>
-          </form>
+            <button className={styles.login__btn} onClick={() => { sendData() }}>{activeMode ? "Зарегистрироваться" : 'Войти'}</button>
+          </div>
         </div>
       </div>
     </div>
