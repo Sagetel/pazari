@@ -1,4 +1,5 @@
 'use client'
+import axios from 'axios';
 import { useEffect, useState } from "react";
 import styles from "./page.module.scss";
 import FilterMain from "../../components/filterMain";
@@ -46,11 +47,28 @@ export default function Home() {
     filtration()
   }, [setting])
 
+  const createUser = async () => {
+    try {
+      const response = await axios.get('http://127.0.0.1:8000/auth/user', {
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXV0aC9sb2dpbiIsImlhdCI6MTcxNjEyMTA4NCwiZXhwIjoxNzE2MTI0Njg0LCJuYmYiOjE3MTYxMjEwODQsImp0aSI6ImFFUjJMRXZkb2xQcnJMUmMiLCJzdWIiOiI1IiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.QxCjWFvxKcqHtqjD2k3m26lVNnWohaEGX1yI-Ut5Myc'
+        }
+      });
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+
+  };
+
+
   return (
     <main className={styles.main}>
       <div className={styles.main__container}>
         <div className={styles.main__title} onClick={() => {
-          console.log(setting);
+          createUser();
         }} >
           Купить автомобиль в Санкт-Петербурге
         </div>
