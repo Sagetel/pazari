@@ -2,6 +2,10 @@
 import Image from 'next/image'
 import { useState } from 'react'
 import styles from './style.module.scss'
+import { updateUser } from '../../utilities/api'
+import { Context } from "../../context"
+import { useContext } from 'react';
+
 
 interface Props {
     name: string
@@ -11,6 +15,8 @@ interface Props {
     password: string
 }
 function MyInformation(information: Props) {
+    const { state, dispatch } = useContext(Context);
+
     const [editMode, setEditMode] = useState(false)
     const [prevInformation, setPrevInformation] = useState({
         name: information.name,
@@ -55,8 +61,8 @@ function MyInformation(information: Props) {
             email,
             password,
         }
-        // sendToBack(newInformation)
         setEditMode(false)
+        sendUpdateInf(newInformation)
         setPrevInformation({
             name: name,
             surname: surname,
@@ -72,6 +78,11 @@ function MyInformation(information: Props) {
         setEmail(prevInformation.email)
         setPassword(prevInformation.password)
         setEditMode(false);
+    }
+
+    const sendUpdateInf = (newInformation: { name: string; surname: string; phone: string; email: string; }) => {
+        const jsonData = { jwt: state.user, data: newInformation }
+        updateUser(jsonData)
     }
 
     return (
@@ -168,7 +179,7 @@ function MyInformation(information: Props) {
                     <input
                         className={styles.information__cell}
                         type="password"
-                        value={email}
+                        value={password}
                         onChange={(e) => handleInputChange(e, 'password')}
                     />
                 ) : (

@@ -19,7 +19,6 @@ export default function RootLayout({
   return (
     <Provider>
       <html lang="ru">
-
         <body>
           <Head>
             <link rel="preload" href="https://mc.yandex.ru/metrika/tag.js" as="script" />

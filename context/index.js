@@ -5,7 +5,7 @@ import { user } from "./reducers/user";
 const initialState = {
   ads: [],
 //   notification: { type: '', text: '' },
-  user: { access_token: '' },
+  user: '',
 };
 
 const Context = createContext({ state: initialState, dispatch: action => { } });

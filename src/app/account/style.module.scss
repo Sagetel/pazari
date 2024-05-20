@@ -42,5 +42,8 @@
 
     &__information {
         grid-area: 2 / 2 / 3 / 3;
+        p {
+            font-size: 25px;
+        }
     }
 }

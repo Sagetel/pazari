@@ -1,7 +1,31 @@
+'use client'
 import Image from "next/image"
 import Link from "next/link"
 import styles from "./style.module.scss"
+//@ts-ignore
+import cookie from 'js-cookie';
+import { useContext, useState, useEffect } from 'react';
+import { Context } from "../../context"
+import { setUser } from "../../utilities/action"
+
 const Header = () => {
+  const { state, dispatch } = useContext(Context);
+  const dataState = useContext(Context);
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+  useEffect(() => {
+    if (dataState.state.user) {
+      setIsLoggedIn(true)
+    }
+  }, [dataState])
+
+  useEffect(() => {
+    const userjwt = cookie.get('userjwt') || '';
+    if (userjwt) {
+      setUser(dispatch, userjwt);
+    }
+  }, [])
+
   return (
     <header className={styles.header}>
       <div className={styles.header__firstline}>
@@ -17,26 +41,32 @@ const Header = () => {
               <li className={styles.header__link}>Личный навигатор</li>
               <li className={styles.header__link}>Поддержка</li>
             </ul>
-            <Link href="/login">
-              <div className={styles.header__link} >Вход
-                <Image
-                  className={styles.header__enter}
-                  src='/icons/enter.svg'
-                  width={30}
-                  height={30}
-                  alt="Picture of the author"
-                />
-              </div>
-            </Link>
-            {/* <a className={styles.header__link} href="/account/121">
-              <Image
-                className={styles.header__enter}
-                src='/icons/user.svg'
-                width={30}
-                height={30}
-                alt="Picture of the author"
-              />
-            </a> */}
+            {
+              !isLoggedIn ?
+                <Link href="/login">
+                  <div className={styles.header__link} >Вход
+                    <Image
+                      className={styles.header__enter}
+                      src='/icons/enter.svg'
+                      width={30}
+                      height={30}
+                      alt="Picture of the author"
+                    />
+                  </div>
+                </Link>
+                :
+                <Link href="/account">
+                  <div className={styles.header__link}>
+                    <Image
+                      className={styles.header__enter}
+                      src='/icons/user.svg'
+                      width={30}
+                      height={30}
+                      alt="Picture of the author"
+                    />
+                  </div>
+                </Link>
+            }
           </nav>
         </div>
       </div>

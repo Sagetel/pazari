@@ -1,7 +1,10 @@
 'use client'
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { registration, login } from '../../../utilities/api'
 import { setUser } from "../../../utilities/action"
+//@ts-ignore
+import cookie from 'js-cookie';
 
 import clsx from 'clsx'
 import Input from '../../../components/UI/input'
@@ -11,6 +14,7 @@ import { Context } from "../../../context"
 
 function Login() {
   const { state, dispatch } = useContext(Context);
+  const router = useRouter()
   const [loginForm, setLoginForm] = useState(
     {
       email: '',
@@ -35,29 +39,22 @@ function Login() {
       await registration(jsonData);
     }
   }
-  //   const saveDataToCookie = (data: any) => {
-  //     if (remeberMe) {
-  //         Cookies.set('USER', JSON.stringify(data), { expires: 1 });
-  //     } else {
-  //         Cookies.set('USER', JSON.stringify(data), { expires: '' });
-  //     }
-  // };
+
 
   const sendLogin = async () => {
     const jsonData = JSON.stringify(loginForm);
     const data = await login(jsonData)
-
     if (data?.access_token !== undefined) {
       console.log(data.access_token);
       setUser(dispatch, data.access_token);
-
-      alert("Успешный вход")
+      cookie.set('userjwt', data.access_token, { expires: 30 });
+      router.push('/account')
     } else {
       alert("Неверный логин или пароль")
     }
   }
   const dataState = useContext(Context);
-  
+
 
   const switcher = ['Вход', 'Регистрация']
 
@@ -70,7 +67,7 @@ function Login() {
               <div className={clsx(styles.login__variant, (activeMode === index && styles.login__active))} key={index} onClick={() => { setActiveMode(index) }}>{item}</div>
             )}
           </div>
-          <div className={styles.login__form} onClick={()=>{console.log(dataState.state);}}>
+          <div className={styles.login__form} onClick={() => { console.log(dataState.state); }}>
 
             <div className={styles.login__title}>{activeMode ? "Регистрация" : 'Вход'}</div>
             <Input

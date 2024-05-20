@@ -57,6 +57,49 @@ export async function login(jsonData) {
     // throw new Error(error);
   }
 }
+export async function getUser(jwt) {
+  try {
+    const response = await axios.get(API_URL + '/auth/user', {
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': `Bearer ${jwt}`
+      }
+    });
+    if (response.status === 400) {
+      alert('Произошла ошибка: ' + response.data.msg);
+    }
+    const data = response.data
+    if (data.status) alert('Произошла ошибка: ' + data.msg)
+
+    return response.data;
+  } catch (error) {
+    console.error('Ошибка получения данных', error);
+  }
+}
+
+
+export async function updateUser(jsonData) {
+  console.log(jsonData.jwt);
+  try {
+    const response = await axios.post(API_URL + '/auth/update', JSON.stringify(jsonData), {
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': `Bearer ${jsonData.jwt}`
+      }
+    });
+    if (response.status === 400) {
+      alert('Произошла ошибка: ' + response.data.msg);
+    }
+    const data = response.data
+    if (data.status) alert('Произошла ошибка: ' + data.msg)
+
+    return response.data;
+  } catch (error) {
+    console.error('Ошибка получения данных', error);
+  }
+}
 
 export async function sendEbol(data, jwt) {
   try {
