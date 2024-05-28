@@ -41,7 +41,6 @@ export default function RootLayout({
               `,
             }}
           />
-
           <img src="https://mc.yandex.ru/watch/97251244" style={{ position: 'absolute', left: '-9999px' }} alt="" />
           <Header />
           {children}

@@ -17,7 +17,12 @@ interface Props {
     typeInput: string
 }
 function FilterOption({ name, type, value, variants, index, selectedOptions, changeSelector, optionRef, setNewRuleSetting, typeInput }: Props) {
-    const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        if (typeInput === 'textarea' || typeInput === 'photo') {
+            const newValue = e.target.value
+            setNewRuleSetting(type, newValue);
+            return
+        }
         const newValue = e.target.value.replace(/\D/g, "")
         setNewRuleSetting(type, newValue);
     };
@@ -47,11 +52,18 @@ function FilterOption({ name, type, value, variants, index, selectedOptions, cha
                     }
                 </div>
                 :
-                <input type="text" className={styles.option__menu} placeholder={name} value={value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")}
-                    onChange={handleInputChange} />
+                typeInput === "textarea" ?
+                    <textarea className={styles.option__menu} placeholder={name} value={value} rows={7}
+                        onChange={handleInputChange} />
+                    :
+                    typeInput === "photo" ?
+                        <input className={styles.option__menu} onChange={handleInputChange} type="file" name="photo" accept="image/*"/>
+                            :
+                            <input type="text" className={styles.option__menu} placeholder={name} value={value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")}
+                                onChange={handleInputChange} />
             }
-        </div>
+                        </div>
     )
 }
 
-export default FilterOption
+            export default FilterOption

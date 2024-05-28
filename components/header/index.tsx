@@ -41,32 +41,40 @@ const Header = () => {
               <li className={styles.header__link}>Личный навигатор</li>
               <li className={styles.header__link}>Поддержка</li>
             </ul>
-            {
-              !isLoggedIn ?
-                <Link href="/login">
-                  <div className={styles.header__link} >Вход
-                    <Image
-                      className={styles.header__enter}
-                      src='/icons/enter.svg'
-                      width={30}
-                      height={30}
-                      alt="Picture of the author"
-                    />
-                  </div>
-                </Link>
-                :
-                <Link href="/account">
-                  <div className={styles.header__link}>
-                    <Image
-                      className={styles.header__enter}
-                      src='/icons/user.svg'
-                      width={30}
-                      height={30}
-                      alt="Picture of the author"
-                    />
-                  </div>
-                </Link>
-            }
+            <div className={styles.header__buttons}>
+              <Link href="/create-ad">
+                <div className={styles.header__btn}>
+                  Создать объявление
+                </div>
+              </Link>
+
+              {
+                !isLoggedIn ?
+                  <Link href="/login">
+                    <div className={styles.header__link} >Вход
+                      <Image
+                        className={styles.header__enter}
+                        src='/icons/enter.svg'
+                        width={30}
+                        height={30}
+                        alt="Picture of the author"
+                      />
+                    </div>
+                  </Link>
+                  :
+                  <Link href="/account">
+                    <div className={styles.header__link}>
+                      <Image
+                        className={styles.header__enter}
+                        src='/icons/user.svg'
+                        width={30}
+                        height={30}
+                        alt="Picture of the author"
+                      />
+                    </div>
+                  </Link>
+              }
+            </div>
           </nav>
         </div>
       </div>

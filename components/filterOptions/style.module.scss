@@ -1,5 +1,6 @@
 .option {
     position: relative;
+
     &__lable {
         margin-bottom: 5px;
     }
@@ -118,7 +119,7 @@
 
     &__menu,
     input {
-        max-width: 200px;
+        // max-width: 200px;
         min-width: 200px;
 
     }
@@ -126,6 +127,10 @@
     input,
     &__text {
         font-size: 14px;
+    }
+
+    textarea {
+        width: 100%
     }
 
 
