@@ -18,10 +18,27 @@ interface Props {
 }
 function FilterOption({ name, type, value, variants, index, selectedOptions, changeSelector, optionRef, setNewRuleSetting, typeInput }: Props) {
     const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        if (typeInput === 'textarea' || typeInput === 'photo') {
+        if (typeInput === 'textarea') {
             const newValue = e.target.value
             setNewRuleSetting(type, newValue);
             return
+        }
+        if (typeInput === 'photo') {
+            //@ts-ignore
+            const files = e.target.files;
+            if (files && files.length > 0) {
+                let selectedImages = [];
+                for (let i = 0; i < Math.min(files.length, 10); i++) {
+                    const reader = new FileReader();
+                    reader.readAsDataURL(files[i]);
+                    reader.onload = () => {
+                        selectedImages.push(reader.result);
+                        if (selectedImages.length === Math.min(files.length, 10)) {
+                            setNewRuleSetting(type, JSON.stringify(selectedImages));
+                        }
+                    }
+                }
+            }
         }
         const newValue = e.target.value.replace(/\D/g, "")
         setNewRuleSetting(type, newValue);
@@ -57,13 +74,13 @@ function FilterOption({ name, type, value, variants, index, selectedOptions, cha
                         onChange={handleInputChange} />
                     :
                     typeInput === "photo" ?
-                        <input className={styles.option__menu} onChange={handleInputChange} type="file" name="photo" accept="image/*"/>
-                            :
-                            <input type="text" className={styles.option__menu} placeholder={name} value={value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")}
-                                onChange={handleInputChange} />
+                        <input className={styles.option__menu} multiple onChange={handleInputChange} type="file" name="photo" accept="image/*" />
+                        :
+                        <input type="text" className={styles.option__menu} placeholder={name} value={value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")}
+                            onChange={handleInputChange} />
             }
-                        </div>
+        </div>
     )
 }
 
-            export default FilterOption
+export default FilterOption
