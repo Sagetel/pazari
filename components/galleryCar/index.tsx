@@ -8,8 +8,16 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
 import styles from './style.module.scss'
-function GalleryCar() {
-    const [thumbsSwiper, setThumbsSwiper] = useState(null);
+interface Images {
+    photo: string
+}
+function GalleryCar(props: Images) {
+    const images = props.photo
+
+    const [imgsBase, setImgsBase] = useState([]);
+
+
+
     const imgs = [
         'https://avatars.mds.yandex.net/get-autoru-vos/9716151/b8ced71078c5b1d8285c143ece97b97b/1200x900n',
         'https://avatars.mds.yandex.net/get-autoru-vos/2023653/190c234c9c9714651f6bdd78adfe28b8/584x438n',
@@ -19,12 +27,13 @@ function GalleryCar() {
     ]
 
     useEffect(() => {
-
-
-    }, [])
+        if (images) {
+            setImgsBase(JSON?.parse(images))
+        }
+    }, [images])
 
     return (
-        <div className={styles.gallery}>
+        <div className={styles.gallery} >
             <Swiper
                 slidesPerView={1}
                 spaceBetween={30}
@@ -36,7 +45,8 @@ function GalleryCar() {
                 modules={[Pagination, Navigation]}
                 className="mySwiper"
             >
-                {imgs.map((src, index) => (
+                
+                {imgsBase.map((src, index) => (
                     <SwiperSlide key={index} style={{ display: 'flex', justifyContent: 'center' }} >
                         <Image
                             src={src}

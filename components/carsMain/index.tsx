@@ -1,43 +1,62 @@
 import CarMain from "../carMain";
 import styles from './style.module.scss'
-interface Car {
-    brand: string;
-    model: string;
-    gear: string;
-    transmission: string;
-    engine: string;
-    year: string;
-    mileage: string;
-    type: string;
-    volume: string;
-    carBody: string;
-    price: string;
-    img: string;
+interface ApiCar {
+    id: number,
+    information: Information,
+    personal: Personal
+    user: User
 }
+interface Information {
+    brand: string,
+    carBody: string,
+    description: string,
+    engine: string,
+    gear: string,
+    mileage: string,
+    model: string,
+    photo: string,
+    price: string,
+    transmission: string,
+    type: string,
+    volume: string,
+    year: string,
+}
+interface Personal {
+    phone: string,
+    tg: string,
+}
+interface User {
+    userId: number,
+    userName: string
+}
+
 interface Props {
-    cars: Car[];
+    cars: ApiCar[]
 }
 
 function CarsMain(props: Props) {
     const cars = props.cars
+    console.log(cars);
+
     return (
         <div className={styles.cars}>
-            <div className={styles.cars__result}>Всего найден: {cars.length} объявлений</div>
+            <div className={styles.cars__result}>Всего найден: {cars?.length} объявлений</div>
             <div className={styles.cars__collection}>
-                {cars.map((car, index) => <CarMain
+                {cars && cars.map((car, index) => <CarMain
+                    number={car.id}
                     key={index}
-                    brand={car.brand}
-                    model={car.model}
-                    gear={car.gear}
-                    transmission={car.transmission}
-                    engine={car.engine}
-                    year={car.year}
-                    mileage={car.mileage}
-                    type={car.type}
-                    volume={car.volume}
-                    carBody={car.carBody}
-                    price={car.price}
-                    img={car.img}
+                    brand={car.information.brand}
+                    model={car.information.model}
+                    gear={car.information.gear}
+                    transmission={car.information.transmission}
+                    engine={car.information.engine}
+                    year={car.information.year}
+                    mileage={car.information.mileage}
+                    type={car.information.type}
+                    volume={car.information.volume}
+                    carBody={car.information.carBody}
+                    price={car.information.price}
+                    photo={JSON?.parse(car.information.photo)[0]}
                 />)}
             </div>
         </div>

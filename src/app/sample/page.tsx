@@ -19,8 +19,8 @@ function Sample() {
   const [newSampleName, setNewSampleName] = useState('')
 
   const [options, setOptions] = useState([
-    { name: 'Бренд', type: 'brand', value: '', variants: [' &#10006;&nbsp;&nbsp;&nbsp;Любой', 'BMW', 'Hyundai', 'Audi', 'Lada', 'Chery', 'Honda', 'Kia', 'Renauilt', 'Nissan', 'Skoda', 'Volfswagen'], typeInput: 'string' },
-    { name: 'Модель', type: 'brand', value: '', variants: ['&#10006;&nbsp;&nbsp;&nbsp;Любая', 'BMW', 'Audi', 'Lada', 'Chery', 'Honda', 'Kia', 'Renauilt', 'Nissan', 'Skoda', 'Volfswagen'], typeInput: 'string' },
+    { name: 'Бренд', type: 'brand', value: '', variants: [' &#10006;&nbsp;&nbsp;&nbsp;Любой', 'BMW', 'Hyundai', 'Audi', 'Lada', 'Chery', 'Honda', 'Kia', 'Renault', 'Nissan', 'Skoda', 'Volfswagen'], typeInput: 'string' },
+    { name: 'Модель', type: 'brand', value: '', variants: ['&#10006;&nbsp;&nbsp;&nbsp;Любая', 'BMW', 'Audi', 'Lada', 'Chery', 'Honda', 'Kia', 'Renault', 'Nissan', 'Skoda', 'Volfswagen'], typeInput: 'string' },
     { name: 'Двигатель', type: 'engine', value: '', variants: ['&#10006;&nbsp;&nbsp;&nbsp;Любой', 'Бензин', 'Дизель', 'Электро', 'Гибрид'], typeInput: 'string' },
     { name: 'Год от', type: 'yearMin', value: '', variants: ['Год от', '2024', '2023', '2022', '2021', '2020', '2019', '2018', '2017', '2016', '2015', '2014', '2013', '2012', '2011', '2010', '2009', '2008', '2007', '2006', '2005', '2004', '2003', '2002', '2001', '2000', '1999', '1998', '1997', '1996', '1995', '1994', '1993', '1992', '1991', '1990'], typeInput: 'string' },
     { name: 'до', type: 'yearMax', value: '', variants: ['год до', '2024', '2023', '2022', '2021', '2020', '2019', '2018', '2017', '2016', '2015', '2014', '2013', '2012', '2011', '2010', '2009', '2008', '2007', '2006', '2005', '2004', '2003', '2002', '2001', '2000', '1999', '1998', '1997', '1996', '1995', '1994', '1993', '1992', '1991', '1990'], typeInput: 'string' },

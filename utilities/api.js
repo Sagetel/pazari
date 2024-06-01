@@ -101,103 +101,55 @@ export async function updateUser(jsonData) {
   }
 }
 
-export async function sendEbol(data, jwt) {
+export async function createAds(jsonData, jwt) {
   try {
-    const response = await axios.post('https://api.edi.global/api/v1/doc', data, {
+    console.log(jwt);
+    const response = await axios.post(API_URL + '/api/ads', jsonData, {
       headers: {
-        'Authorization': `Bearer ${jwt}`
-      }
-    });
-    console.log(response);
-    return response
-  } catch (error) {
-    console.error('ошибка sendEbol', error);
-    alert(error.response.data.msg)
-    // throw new Error(error);
-  }
-}
-export async function updateEbol(data, jwt) {
-  try {
-    const response = await axios.put(`https://api.edi.global/api/v1/doc`, data, {
-      headers: {
-        'Authorization': `Bearer ${jwt}`
-      }
-    });
-    console.log(response);
-    return response.data
-  } catch (error) {
-    console.error('ошибка обновления', error);
-    alert(error.response.data.msg)
-    // throw new Error(error);
-  }
-}
-
-export async function getAllEbols(jwt) {
-  try {
-    const response = await axios.get('https://api.edi.global/api/v1/doc', {
-      headers: {
+        'Content-Type': 'application/json',
         'Authorization': `Bearer ${jwt}`
       }
     });
     if (response.status === 400) {
-      alert('Произошла ошибка: ' + response.data.msg);
+      alert('Произошла ошибка: ' + response.data.message);
+    } else {
+      alert(response.data.message);
     }
-    const data = response.data
-    if (data.status) alert('Произошла ошибка: ' + data.msg)
     return response.data;
   } catch (error) {
-    console.error('ошибка getAllEbols', error);
-    // throw new Error(error);
+    console.error('Ошибка отправки данных', error);
+    throw new Error(error);
   }
 }
-export async function getEbolById(jwt, id) {
+export async function getAllAds() {
   try {
-    const response = await axios.get(`https://api.edi.global/api/v1/doc/${id}`, {
+    const response = await axios.get(API_URL + '/api/ads', {
       headers: {
-        'Authorization': `Bearer ${jwt}`
+        'Content-Type': 'application/json'
       }
     });
     if (response.status === 400) {
-      alert('Произошла ошибка: ' + response.data.msg);
-    }
-    const data = response.data
-    if (data.status) alert('Произошла ошибка: ' + data.msg)
+      alert('Произошла ошибка: ' + response.data.message);
+    } 
     return response.data;
   } catch (error) {
-    console.error('ну ошибка', error);
-    // throw new Error(error);
+    console.error('Ошибка получения данных', error);
+    throw new Error(error);
   }
 }
-
-export async function getEbolPreview(uid) {
+export async function getAdById(id) {
   try {
-    const response = await axios.get(`https://api.edi.global/api/v1/datamatrix/qr/${uid}`, {
+    const response = await axios.get(API_URL + `/api/ads/${id}`, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
     });
-    console.log(response.data);
     if (response.status === 400) {
-      alert('Произошла ошибка: ' + response.data.msg);
-    }
-    const data = response.data
-    if (data.status) alert('Произошла ошибка: ' + data.msg)
+      alert('Произошла ошибка: ' + response.data.message);
+    } 
     return response.data;
   } catch (error) {
-    console.error('ну ошибка', error);
-    // throw new Error(error);
-  }
-}
-export async function getBaseForDownload(uid) {
-  try {
-    const response = await axios.get(`https://api.edi.global/api/v1/download/doc/${uid}`, {
-    });
-    console.log(response.data);
-    if (response.status === 400) {
-      alert('Произошла ошибка: ' + response.data.msg);
-    }
-    const data = response.data
-    if (data.status) alert('Произошла ошибка: ' + data.msg)
-    return response.data;
-  } catch (error) {
-    console.error('ну ошибка', error);
-    // throw new Error(error);
+    console.error('Ошибка получения данных', error);
+    throw new Error(error);
   }
 }
