@@ -42,7 +42,7 @@ export default function Home() {
   const [setting, setSetting] = useState({
     brand: '', model: '', gear: '', transmission: '', engine: '', yearMin: "", yearMax: "", mileageMin: '', mileageMax: '', type: 'cars', volumeMin: '', volumeMax: '', carBody: '', priceMin: '', priceMax: ''
   })
-  
+
   const [cars, setCars] = useState<ApiCars[]>()
 
   const filtration = () => {
@@ -91,7 +91,7 @@ export default function Home() {
         <FilterMain
           setting={setting}
           setSetting={setSetting} />
-        <CarsMain cars={cars} />
+        {cars && <CarsMain cars={cars} />}
       </div>
     </main>
   );

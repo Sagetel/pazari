@@ -22,6 +22,7 @@ function MyFavorite() {
                     key={index}
                     brand={car.brand}
                     model={car.model}
+                    number={1}
                     gear={car.gear}
                     transmission={car.transmission}
                     engine={car.engine}
@@ -31,7 +32,7 @@ function MyFavorite() {
                     volume={car.volume}
                     carBody={car.carBody}
                     price={car.price}
-                    img={car.img}
+                    photo={car.img}
                 />)}
             </div>
         </div>
