@@ -40,7 +40,7 @@ function CarsMain(props: Props) {
 
     return (
         <div className={styles.cars}>
-            <div className={styles.cars__result}>Всего найден: {cars?.length} объявлений</div>
+            <div className={styles.cars__result}>Всего найдено: {cars?.length} объявлений</div>
             <div className={styles.cars__collection}>
                 {cars && cars.map((car, index) => <CarMain
                     number={car.id}

@@ -70,7 +70,7 @@ function InformationCar(car: Props) {
                 <div className={styles.information__title}>
                     Описание
                 </div>
-                <div className={styles.information__text}>
+                <div className={styles.information__text} >
                     {description}
                 </div>
             </div>
