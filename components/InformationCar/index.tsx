@@ -13,6 +13,7 @@ interface CarDetails {
     carBody: string
     price: string
     photo: string
+    horse: string
     description: string
 }
 
@@ -20,7 +21,7 @@ interface Props {
     information: CarDetails;
 }
 function InformationCar(car: Props) {
-    const { brand, model, gear, transmission, engine, year, mileage, volume, carBody, description } = car.information
+    const { brand, model, gear, transmission, horse, engine, year, mileage, volume, carBody, description } = car.information
     return (
         <div className={styles.information}>
             <div className={styles.information__based}>
@@ -63,6 +64,10 @@ function InformationCar(car: Props) {
                     <div className={styles.information__row}>
                         <div className={styles.information__name}>Объем двигателя</div>
                         <div className={styles.information__cell}>{volume} л</div>
+                    </div>
+                    <div className={styles.information__row}>
+                        <div className={styles.information__name}>Мощность</div>
+                        <div className={styles.information__cell}>{horse} л.с</div>
                     </div>
                 </div>
             </div>

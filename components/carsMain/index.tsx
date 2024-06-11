@@ -36,8 +36,6 @@ interface Props {
 
 function CarsMain(props: Props) {
     const cars = props.cars
-    console.log(cars);
-
     return (
         <div className={styles.cars}>
             <div className={styles.cars__result}>Всего найдено: {cars?.length} объявлений</div>

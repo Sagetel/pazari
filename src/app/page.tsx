@@ -5,7 +5,6 @@ import FilterMain from "../../components/filterMain";
 import CarsMain from "../../components/carsMain";
 import React, { useContext } from 'react';
 import { Context } from '../../context';
-import { getAllAds } from "../../utilities/api";
 
 interface ApiCars {
   id: number,
@@ -17,6 +16,7 @@ interface Information {
   brand: string,
   carBody: string,
   description: string,
+  horse: string,
   engine: string,
   gear: string,
   mileage: string,
@@ -40,7 +40,7 @@ interface User {
 export default function Home() {
   const { state, dispatch } = useContext(Context);
   const [setting, setSetting] = useState({
-    brand: '', model: '', gear: '', transmission: '', engine: '', yearMin: "", yearMax: "", mileageMin: '', mileageMax: '', type: 'cars', volumeMin: '', volumeMax: '', carBody: '', priceMin: '', priceMax: ''
+    brand: '', model: '', gear: '', transmission: '', engine: '', yearMin: "", yearMax: "", mileageMin: '', mileageMax: '', type: 'cars', volumeMin: '', volumeMax: '', carBody: '', priceMin: '', priceMax: '', horseMin: '', horseMax: '',
   })
 
   const [originalCars, setOriginalCars] = useState<ApiCars[]>()
@@ -54,16 +54,16 @@ export default function Home() {
         (setting.gear ? car.information.gear === setting.gear : true) &&
         (setting.transmission ? car.information.transmission === setting.transmission : true) &&
         (setting.engine ? car.information.engine === setting.engine : true) &&
-        (setting.yearMin ? car.information.year >= setting.yearMin : true) &&
-        (setting.yearMax ? car.information.year <= setting.yearMax : true) &&
-        (setting.mileageMin ? car.information.mileage >= setting.mileageMin : true) &&
-        (setting.mileageMax ? car.information.mileage <= setting.mileageMax : true) &&
+        (setting.yearMin ? Number(car.information.year) >= Number(setting.yearMin) : true) &&
+        (setting.yearMax ? Number(car.information.year) <= Number(setting.yearMax) : true) &&
+        (setting.mileageMin ? Number(car.information.mileage) >= Number(setting.mileageMin) : true) &&
+        (setting.mileageMax ? Number(car.information.mileage) <= Number(setting.mileageMax) : true) &&
         (setting.type ? car.information.type === setting.type : true) &&
         (setting.volumeMin ? car.information.volume >= setting.volumeMin : true) &&
         (setting.volumeMax ? car.information.volume <= setting.volumeMax : true) &&
         (setting.carBody ? car.information.carBody === setting.carBody : true) &&
-        (setting.priceMin ? car.information.price >= setting.priceMin : true) &&
-        (setting.priceMax ? car.information.price <= setting.priceMax : true)
+        (setting.priceMin ? Number(car.information.price) >= Number(setting.priceMin) : true) &&
+        (setting.priceMax ? Number(car.information.price) <= Number(setting.priceMax) : true)
     })
     setCars(filteredCars)
   }
@@ -73,21 +73,21 @@ export default function Home() {
   }, [setting])
 
   const getAllCars = async () => {
-    const apiCar = await getAllAds()
+    const apiCar = state.ads
     setCars(apiCar)
     setOriginalCars(apiCar)
   }
 
   useEffect(() => {
     getAllCars()
-  }, [])
+  }, [state.ads])
 
   const data = useContext(Context);
 
   return (
     <main className={styles.main}>
       <div className={styles.main__container}>
-        <div className={styles.main__title} onClick={()=>{console.log(setting)}} >
+        <div className={styles.main__title} onClick={() => { console.log(setting) }} >
           Купить автомобиль в Санкт-Петербурге
         </div>
         <FilterMain

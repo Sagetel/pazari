@@ -9,8 +9,10 @@ export const optionsFields = [
     { name: 'Объем до', type: 'volumeMax', value: '', variants: ['Объем до', '0.1л', '0.2л', '0.3л', '0.4л', '0.5л', '0.6л', '0.7л', '0.8л', '0.9л', '1л', '1.1л', '1.2л', '1.3л', '1.4л', '1.5л', '1.6л', '1.7л', '1.8л', '1.9л', '2л', '2.1л', '2.2л', '2.3л', '2.4л', '2.5л', '2.6л', '2.7л', '2.8л', '2.9л', '3л', '3.5л', '4л', '4.5л', '5л', '5.5л', '6л', '6.5л', '7л', '7.5л', '8л', '8.5л', '9л', '9.5л'], typeInput: 'string' },
     { name: 'Коробка', type: 'transmission', value: '', variants: ['&#10006;&nbsp;&nbsp;&nbsp;Любая', 'Автоматическая', 'Робот', 'Механическая'], typeInput: 'string' },
     { name: 'Кузов', type: 'carBody', value: '', variants: ['&#10006;&nbsp;&nbsp;&nbsp;Любой', 'Седан', 'Хэтчбек', 'Хэтчбек 3 дв.', 'Хэтчбек 5 дв.', 'Купе', 'Лифтбек', 'Кабриолет', 'Пикап', 'Внедорожник', 'Внедорожник 3 дв.', 'Внедорожник 5 дв.', 'Минивен', 'Фургон'], typeInput: 'string' },
-    { name: 'Пробег от, км', type: 'mileagemin', value: '', variants: [''], typeInput: 'number' },
+    { name: 'Пробег от, км', type: 'mileageMin', value: '', variants: [''], typeInput: 'number' },
     { name: 'до', type: 'mileageMax', value: '', variants: [''], typeInput: 'number' },
+    { name: 'Мощность л.с от', type: 'horseMin', value: '', variants: [''], typeInput: 'number' },
+    { name: 'до', type: 'horseMax', value: '', variants: [''], typeInput: 'number' },
     { name: 'Цена от, ₽', type: 'priceMin', value: '', variants: [''], typeInput: 'number' },
     { name: 'до', type: 'priceMax', value: '', variants: [''], typeInput: 'number' },
 
@@ -28,7 +30,7 @@ export const featureFields = [
     { name: 'Пробег, км', type: 'mileage', value: '', variants: [''], typeInput: 'number' },
     { name: 'Цена, ₽', type: 'price', value: '', variants: [''], typeInput: 'number' },
     { name: 'Фото', type: 'photo', value: '', variants: [''], typeInput: 'photo' },
-
+    { name: 'Мощность л.с', type: 'horse', value: '', variants: [''], typeInput: 'number' },
 
     { name: 'Описание', type: 'description', value: '', variants: ['&#10006;&nbsp;&nbsp;&nbsp;Любой', 'Седан', 'Хэтчбек', 'Хэтчбек 3 дв.', 'Хэтчбек 5 дв.', 'Купе', 'Лифтбек', 'Кабриолет', 'Пикап', 'Внедорожник', 'Внедорожник 3 дв.', 'Внедорожник 5 дв.', 'Минивен', 'Фургон'], typeInput: 'textarea' },
 

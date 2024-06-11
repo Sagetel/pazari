@@ -6,7 +6,10 @@ import styles from "./style.module.scss"
 import cookie from 'js-cookie';
 import { useContext, useState, useEffect } from 'react';
 import { Context } from "../../context"
-import { setUser } from "../../utilities/action"
+
+import { setUser, setAds } from "../../utilities/action"
+import { getAllAds } from "../../utilities/api";
+
 
 const Header = () => {
   const { state, dispatch } = useContext(Context);
@@ -19,11 +22,19 @@ const Header = () => {
     }
   }, [dataState])
 
+  const saveAllAds = async () => {
+    const ads = await getAllAds()
+    if (ads) {
+      setAds(dispatch, ads);
+    }
+  }
+
   useEffect(() => {
     const userjwt = cookie.get('userjwt') || '';
     if (userjwt) {
       setUser(dispatch, userjwt);
     }
+    saveAllAds()
   }, [])
 
   return (
@@ -37,8 +48,10 @@ const Header = () => {
           </Link>
           <nav className={styles.header__nav}>
             <ul className={styles.header__list}>
-              <li className={styles.header__link}>Избранное</li>
-              <li className={styles.header__link}>Личный навигатор</li>
+              <li className={styles.header__link} >Избранное</li>
+              <Link href="/navigator">
+                <li className={styles.header__link}>Личный навигатор</li>
+              </Link>
               <li className={styles.header__link}>Поддержка</li>
             </ul>
             <div className={styles.header__buttons}>
@@ -47,7 +60,6 @@ const Header = () => {
                   Создать объявление
                 </div>
               </Link>
-
               {
                 !isLoggedIn ?
                   <Link href="/login">

@@ -1,7 +1,7 @@
 'use client'
 import Image from 'next/image'
 import { useState, useEffect, useRef, RefObject } from 'react'
-import {optionsFields, OptionsFieldsInterface} from '../../public/scripts/options'
+import { optionsFields, OptionsFieldsInterface } from '../../public/scripts/options'
 import clsx from 'clsx'
 import FilterOption from '../filterOptions'
 import styles from './style.module.scss'
@@ -21,6 +21,8 @@ interface Setting {
     carBody: string;
     priceMin: string;
     priceMax: string;
+    horseMin: string;
+    horseMax: string;
 }
 
 interface Props {
@@ -92,7 +94,6 @@ function FilterMain(props: Props) {
                         {options.map((option, index) =>
                             <FilterOption selectedOptions={selectedOptions} changeSelector={changeSelector} name={option.name} key={index} index={index} type={option.type} value={option.value} optionRef={optionRef} variants={option.variants} setNewRuleSetting={setNewRuleSetting} typeInput={option.typeInput} />)
                         }
-                        <div className={styles.filter__btn}>Показать результаты</div>
                     </div>
                 </div>
             </div>
