@@ -43,11 +43,12 @@ export default function Home() {
     brand: '', model: '', gear: '', transmission: '', engine: '', yearMin: "", yearMax: "", mileageMin: '', mileageMax: '', type: 'cars', volumeMin: '', volumeMax: '', carBody: '', priceMin: '', priceMax: ''
   })
 
+  const [originalCars, setOriginalCars] = useState<ApiCars[]>()
   const [cars, setCars] = useState<ApiCars[]>()
 
   const filtration = () => {
-    if (!cars) return
-    let filteredCars = cars.filter((car) => {
+    if (!originalCars) return
+    let filteredCars = originalCars.filter((car) => {
       return (setting.brand ? car.information.brand === setting.brand : true) &&
         (setting.model ? car.information.model === setting.model : true) &&
         (setting.gear ? car.information.gear === setting.gear : true) &&
@@ -74,6 +75,7 @@ export default function Home() {
   const getAllCars = async () => {
     const apiCar = await getAllAds()
     setCars(apiCar)
+    setOriginalCars(apiCar)
   }
 
   useEffect(() => {
@@ -85,7 +87,7 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <div className={styles.main__container}>
-        <div className={styles.main__title}  >
+        <div className={styles.main__title} onClick={()=>{console.log(setting)}} >
           Купить автомобиль в Санкт-Петербурге
         </div>
         <FilterMain
