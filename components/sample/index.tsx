@@ -1,5 +1,6 @@
 'use client'
 import { useState, useEffect, useRef, RefObject } from 'react'
+import clsx from 'clsx'
 import styles from './style.module.scss'
 import FilterOption from '../filterOptions'
 import Popup from '../popup'
@@ -8,15 +9,33 @@ import { optionsFields } from '../../public/scripts/options'
 function Sample() {
   const [sampleArray, setSampleArray] = useState([
     {
-      name: "Большая и крутая",
+      name: "15-22г до 5кк",
       rules: {
-        brand: "Hyundai", carBody: "", engine: "", gear: "", mileageMax: "", mileageMin: "", model: "", priceMax: "", priceMin: "", transmission: "Автоматическая", type: "cars", volumeMax: "", volumeMin: "", yearMax: "", yearMin: "", horseMin: '', horseMax: ''
+        brand: "",
+        carBody: "",
+        engine: "Бензин",
+        gear: "Передний",
+        mileageMax: "",
+        mileageMin: "",
+        model: "",
+        priceMax: "1000000",
+        priceMin: "5000000",
+        transmission: "",
+        type: "cars",
+        volumeMax: "3л",
+        volumeMin: "2.5л",
+        yearMax: "2022",
+        yearMin: "2015",
+        horseMin: '',
+        horseMax: ''
       }
     },
   ])
   const [setting, setSetting] = useState({
     brand: '', model: '', gear: '', transmission: '', engine: '', yearMin: "", yearMax: "", mileageMin: '', mileageMax: '', type: 'cars', volumeMin: '', volumeMax: '', carBody: '', priceMin: '', priceMax: '', horseMin: '', horseMax: ''
   })
+
+  const [selectedSample, setSelectedSample] = useState<null | number>(null)
 
   const [newSampleName, setNewSampleName] = useState('')
 
@@ -63,7 +82,14 @@ function Sample() {
     setIsOpen(false);
   }
 
+  const selectSample = (index: number) => {
+    if (index != selectedSample) {
+      setSelectedSample(index)
+    } else {
+      setSelectedSample(null)
 
+    }
+  }
 
   useEffect(() => {
     document.body.addEventListener('click', handleOutsideClick);
@@ -92,7 +118,7 @@ function Sample() {
 
       <div className={styles.sample__table}>
         {sampleArray.map((sample, index) =>
-          <div className={styles.sample__row} key={index}>
+          <div className={clsx(styles.sample__row, (selectedSample === index && styles.sample__selected))} key={index}>
             <div className={styles.sample__name}>{sample.name}</div>
             <div className={styles.sample__rules}>
               <div className={styles.sample__cell}>Бред: {sample.rules.brand ? sample.rules.brand : "-"}</div>
@@ -105,17 +131,21 @@ function Sample() {
               <div className={styles.sample__cell}>Цена от: {sample.rules.priceMax ? sample.rules.priceMax : "-"}</div>
               <div className={styles.sample__cell}>Цена до: {sample.rules.priceMin ? sample.rules.priceMin : "-"}</div>
               <div className={styles.sample__cell}>Коробка: {sample.rules.transmission ? sample.rules.transmission : "-"}</div>
-              <div className={styles.sample__cell}>Объем от: {sample.rules.volumeMax ? sample.rules.volumeMax : "-"}</div>
-              <div className={styles.sample__cell}>Объем до: {sample.rules.volumeMin ? sample.rules.volumeMin : "-"}</div>
-              <div className={styles.sample__cell}>Год от: {sample.rules.yearMax ? sample.rules.yearMax : "-"}</div>
-              <div className={styles.sample__cell}>Год до: {sample.rules.yearMin ? sample.rules.yearMin : "-"}</div>
+              <div className={styles.sample__cell}>Объем от: {sample.rules.volumeMax ? sample.rules.volumeMin : "-"}</div>
+              <div className={styles.sample__cell}>Объем до: {sample.rules.volumeMin ? sample.rules.volumeMax : "-"}</div>
+              <div className={styles.sample__cell}>Год от: {sample.rules.yearMax ? sample.rules.yearMin : "-"}</div>
+              <div className={styles.sample__cell}>Год до: {sample.rules.yearMin ? sample.rules.yearMax : "-"}</div>
               <div className={styles.sample__cell}>Мощность л.с от: {sample.rules.horseMin ? sample.rules.horseMin : "-"}</div>
               <div className={styles.sample__cell}>Мощность л.с до: {sample.rules.horseMax ? sample.rules.horseMax : "-"}</div>
+            </div>
+            <div className={styles.sample__buttons}>
+              <div className={styles.sample__select} onClick={() => { selectSample(index) }}>Выбрать</div>
+              <div className={styles.sample__delete} onClick={() => { setSampleArray(sampleArray.filter(item => item.name !== sample.name)) }}>Удалить</div>
             </div>
           </div>
         )}
       </div>
-    </div>
+    </div >
   )
 }
 

@@ -50,7 +50,7 @@ const Header = () => {
             <ul className={styles.header__list}>
               <li className={styles.header__link} >Избранное</li>
               <Link href="/navigator">
-                <li className={styles.header__link}>Личный навигатор</li>
+                <li className={styles.header__link}>Навигатор</li>
               </Link>
               <li className={styles.header__link}>Поддержка</li>
             </ul>

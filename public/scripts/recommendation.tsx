@@ -31,7 +31,6 @@ export const recommendation = (props: PropsInterface) => {
         }
         else { return false }
     }
-
     const checkNoFullCompliance = (ad: ApiCars) => {
         const car = ad.information
         let counter = 0;
@@ -48,12 +47,9 @@ export const recommendation = (props: PropsInterface) => {
         counter = counter + checkTransmission({ transmission: car.transmission, transmissionRule: rule.transmission })
         if (counter <= 6) { return true } else { return false }
     }
-
     const checkDemand = (ad: ApiCars) => {
-        //Полное соответсвие
         if (checkFullCompliance(ad)) { return true }
         if (checkNoFullCompliance(ad)) { return true }
-
     }
     const newCars = ads.filter(ad => checkDemand(ad))
     setCars(newCars)

@@ -4,8 +4,8 @@ export const checkVolume = (props) => {
     volumeMin = parseFloat(volumeMin.replace(/[^\d.]/g, ""))
     volumeMax = parseFloat(volumeMax.replace(/[^\d.]/g, ""))
     if (volumeMin && volume - volumeMin < 0) {
-        if (volume - volumeMin > -0.5) { return 1 } else {
-            if (volume - volumeMin <= -0.5) { return 3 }
+        if (Math.abs(volume - volumeMin) > 0.5) { return 3 } else {
+            if (Math.abs(volume - volumeMin) <= 0.5) { return 1 }
         }
     }
     if (volumeMax && volume - volumeMax > 0) {
@@ -21,8 +21,8 @@ export const checkYear = (props) => {
     yearMin = parseFloat(yearMin)
     yearMax = parseFloat(yearMax)
     if (yearMin && year - yearMin < 0) {
-        if (year - yearMin > 3) { return 1 } else {
-            if (year - yearMin <= 3) { return 3 }
+        if (Math.abs(year - yearMin) > 3) { return 3 } else {
+            if (Math.abs(year - yearMin) <= 3) { return 1 }
         }
     }
     if (yearMax && year - yearMax > 0) {
@@ -38,13 +38,21 @@ export const checkPrice = (props) => {
     priceMin = parseFloat(priceMin)
     priceMax = parseFloat(priceMax)
     if (priceMin && price - priceMin < 0) {
-        if (price - priceMin > 500000) { return 1 } else {
-            if (price - priceMin <= 500000) { return 3 }
+        if (Math.abs(price - priceMin) > 1000000) { return 3 }
+        else {
+            if (Math.abs(price - priceMin) > 500000) { return 2 }
+            else {
+                if (Math.abs(price - priceMin) <= 500000) { return 1 }
+            }
         }
     }
     if (priceMax && price - priceMax > 0) {
-        if (price - priceMax > 500000) { return 3 } else {
-            if (price - priceMax <= 500000) { return 1 }
+        if (price - priceMax > 1000000) { return 5 }
+        else {
+            if (price - priceMax > 500000) { return 3 }
+            else {
+                if (price - priceMax <= 500000) { return 1 }
+            }
         }
     }
     return 0
@@ -55,8 +63,8 @@ export const checkMileage = (props) => {
     mileageMin = parseFloat(mileageMin)
     mileageMax = parseFloat(mileageMax)
     if (mileageMin && mileage - mileageMin < 0) {
-        if (mileage - mileageMin > 50000) { return 1 } else {
-            if (mileage - mileageMin <= 50000) { return 3 }
+        if (Math.abs(mileage - mileageMin) > 50000) { return 1 } else {
+            if (Math.abs(mileage - mileageMin) <= 50000) { return 3 }
         }
     }
     if (mileageMax && mileage - mileageMax > 0) {
@@ -72,8 +80,8 @@ export const checkHorse = (props) => {
     horseMin = parseFloat(horseMin)
     horseMax = parseFloat(horseMax)
     if (horseMin && horse - horseMin < 0) {
-        if (horse - horseMin > 30) { return 1 } else {
-            if (horse - horseMin <= 30) { return 3 }
+        if (Math.abs(horse - horseMin) > 30) { return 3 } else {
+            if (Math.abs(horse - horseMin) <= 30) { return 1 }
         }
     }
     if (horseMax && horse - horseMax > 0) {

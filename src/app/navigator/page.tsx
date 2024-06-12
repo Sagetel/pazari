@@ -4,6 +4,7 @@ import Sample from '../../../components/sample'
 import React, { useContext, useEffect, useState } from 'react';
 import { Context } from '../../../context';
 import { ApiCars } from '../../../public/scripts/interfaces';
+import CarsMain from "../../../components/carsMain";
 import { recommendation } from '../../../public/scripts/recommendation';
 function Navigator() {
     const { state, dispatch } = useContext(Context);
@@ -26,6 +27,7 @@ function Navigator() {
         horseMin: '',
         horseMax: ''
     }
+
     const [originalCars, setOriginalCars] = useState<ApiCars[]>([])
     const [cars, setCars] = useState<ApiCars[]>([])
     const getAllCars = async () => {
@@ -51,6 +53,7 @@ function Navigator() {
             <div className={styles.navigator__container}>
                 <div className={styles.navigator__title} onClick={() => { console.log(cars) }}>Навигатор</div>
                 <Sample />
+                {cars && <CarsMain cars={cars} />}
             </div>
         </div>
     )
